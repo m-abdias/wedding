@@ -1,5 +1,15 @@
 import { useState, useEffect } from "react";
-import { MapPin, Hotel, Scissors, Car, Mail, Phone } from "lucide-react";
+import {
+  MapPin,
+  Hotel,
+  Scissors,
+  Car,
+  Mail,
+  Phone,
+  Church,
+} from "lucide-react";
+import Contador from "./Contador";
+import Buttons from "./Buttons";
 
 const WhatsAppIcon = () => (
   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -48,11 +58,11 @@ function App() {
 
           <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-white via-white/90 to-transparent" />
 
-          <div className="absolute bottom-24 md:bottom-32 left-1/2 transform -translate-x-1/2 z-10">
+          <div className="absolute top-6 left-1/2 transform -translate-x-1/2 z-10">
             <img
               src="/wedding/logo black.png"
               alt="M&L Logo"
-              className="w-24 h-24 md:w-32 md:h-32 animate-fade-in drop-shadow-2xl"
+              className="w-28 h-28 md:w-32 md:h-32 animate-fade-in drop-shadow-2xl"
             />
           </div>
         </div>
@@ -100,7 +110,7 @@ function App() {
               </div>
             </div>
 
-            <p className="text-sm text-gray-600 max-w-3xl mx-auto mb-10 leading-relaxed">
+            <p className="text-sm text-gray-600 max-w-3xl mx-auto mb-2 leading-relaxed">
               Prepare-se para viver esse momento com a gente! <br />
               Nosso casamento será em Itajubá, e estamos muito felizes em
               compartilhar esse dia tão especial com vocês.
@@ -110,80 +120,18 @@ function App() {
               hospedagem, salões de beleza e transporte por aplicativo.
             </p>
 
-            <div
-              className="py-20 grid grid-cols-2 sm:grid-cols-4 gap-4 justify-center"
-              style={{ marginTop: "-2rem", marginBottom: "1rem" }}
-            >
-              <button
-                onClick={() =>
-                  document
-                    .getElementById("hospedagem")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="group flex flex-col items-center gap-1 px-4 py-3 bg-white border-gray-300 rounded-2xl hover:border-green-400 hover:bg-green-50 transition-all duration-300 shadow-sm hover:shadow-lg"
-              >
-                <Hotel className="w-6 h-6 text-green-500" />
-                <span className="text-sm font-medium text-gray-700 group-hover:text-green-600">
-                  Hospedagens
-                </span>
-              </button>
-
-              <button
-                onClick={() =>
-                  document
-                    .getElementById("salao")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="group flex flex-col items-center gap-1 px-4 py-3 bg-white border-gray-300 rounded-2xl hover:border-pink-400 hover:bg-pink-50 transition-all duration-300 shadow-sm hover:shadow-lg"
-              >
-                <Scissors className="w-6 h-6 text-pink-500" />
-                <span className="text-sm font-medium text-gray-700 group-hover:text-pink-600">
-                  Salões
-                </span>
-              </button>
-
-              <button
-                onClick={() =>
-                  document
-                    .getElementById("transporte")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="group flex flex-col items-center gap-1 px-4 py-3 bg-white border-gray-300 rounded-2xl hover:border-orange-400 hover:bg-orange-50 transition-all duration-300 shadow-sm hover:shadow-lg"
-              >
-                <Car className="w-6 h-6 text-orange-500" />
-                <span className="text-sm font-medium text-gray-700 group-hover:text-orange-600">
-                  Transporte
-                </span>
-              </button>
-
-              <button
-                onClick={() =>
-                  document
-                    .getElementById("cerimonia")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="group flex flex-col items-center gap-1 px-4 py-3 bg-white border-gray-300 rounded-2xl hover:border-red-400 hover:bg-red-50 transition-all duration-300 shadow-sm hover:shadow-lg"
-              >
-                <MapPin className="w-6 h-6 text-red-500" />
-                <span className="text-sm font-medium text-gray-700 group-hover:text-red-600">
-                  Cerimônia
-                </span>
-              </button>
-            </div>
+            <Contador />
+            <Buttons />
           </div>
         </div>
       </section>
 
-      <section id="cerimonia" className="py-20 px-4 bg-gray-50">
+      <section id="cerimonia" className="p-8 px-4 bg-gray-50">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-16">
-            Cerimônia
-          </h2>
-
           <div className="max-w-3xl mx-auto">
             <div className="bg-white border border-gray-200 rounded-sm p-8 shadow-sm">
-              <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <MapPin className="w-8 h-8 text-red-500" />
+              <div className="w-16 h-16 bg-gradient-to-br from-pink-300 to-pink-400 shadow-sm group-hover:shadow-md rounded-full flex items-center justify-center mx-auto mb-6">
+                <Church className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-medium text-gray-900 mb-4">
                 Igreja do Colégio das Irmãs
@@ -201,7 +149,7 @@ function App() {
                 href="https://maps.app.goo.gl/HzjZ2D5pyXZSP9yW6"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 mt-6 border border-red-400 text-red-600 px-6 py-3 rounded-full hover:bg-red-50 transition-colors text-sm font-medium"
+                className="inline-flex items-center gap-2 mt-6 border border-pink-400 text-pink-600 px-6 py-3 rounded-full hover:bg-pink-50 transition-colors text-sm font-medium"
               >
                 <MapPin className="w-4 h-4" />
                 Abrir no Google Maps
@@ -211,14 +159,15 @@ function App() {
         </div>
       </section>
 
-      <section id="hospedagem" className="py-20 px-4 scroll-mt-20">
+      <section id="hospedagem" className="p-8 px-4 scroll-mt-20">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <Hotel className="w-8 h-8 mx-auto mb-4 text-green-500" />
-            <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4">
+          <div className="text-center">
+            <div className="w-16 h-16 bg-gradient-to-br from-orange-300 to-orange-400 shadow-sm group-hover:shadow-md rounded-full flex items-center justify-center mx-auto mb-6">
+              <Hotel className="w-8 h-8 text-white" />
+            </div>
+            <h3 className="text-2xl font-medium text-gray-900 mb-4">
               Hospedagem
-            </h2>
-            <p className="text-gray-600">Sugestões de hotéis e flats</p>
+            </h3>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -290,7 +239,7 @@ function App() {
             ].map((hotel, index) => (
               <div
                 key={index}
-                className="border border-gray-200 rounded-sm p-6 hover:border-green-300 transition-colors"
+                className="border border-gray-200 rounded-sm p-6 hover:border-orange-300 transition-colors"
               >
                 <h3 className="text-xl font-medium text-gray-900 mb-2">
                   {hotel.name}
@@ -317,7 +266,7 @@ function App() {
                   href={hotel.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block text-center border border-gray-300 text-gray-700 px-4 py-2 rounded-full hover:border-green-400 hover:text-green-500 transition-colors text-sm"
+                  className="block text-center border border-gray-300 text-gray-700 px-4 py-2 rounded-full hover:border-orange-400 hover:text-orange-500 transition-colors text-sm"
                 >
                   Ver Disponibilidade
                 </a>
@@ -327,17 +276,18 @@ function App() {
         </div>
       </section>
 
-      <section className="py-20 px-4 bg-gray-50 scroll-mt-20">
+      <section className="p-8 px-4 bg-gray-50 scroll-mt-20">
         <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-16">
+          <div className="grid md:grid-cols-2 gap-8">
             <div id="salao">
               <div className="max-w-6xl mx-auto">
-                <div className="text-center mb-16">
-                  <Scissors className="w-8 h-8 mx-auto mb-4 text-pink-500" />
-                  <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4">
-                    Salões de Beleza
-                  </h2>
-                  <p className="text-gray-600">Para você chegar impecável</p>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-gradient-to-br from-pink-300 to-pink-400 shadow-sm group-hover:shadow-md rounded-full flex items-center justify-center mx-auto mb-6">
+                    <Scissors className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-medium text-gray-900 mb-4">
+                    Salão de Beleza
+                  </h3>
                 </div>
               </div>
               <div className="space-y-6">
@@ -351,7 +301,7 @@ function App() {
                   {
                     name: "Thaisy Guimarães Studio",
                     phone: "(35) 99838-4158",
-                    insta: "@thaisystd",
+                    insta: "@thaisystudio",
                     address: "R Eng. Pedro Fonseca Paiva, 259 - Avenida",
                   },
                   {
@@ -372,6 +322,17 @@ function App() {
                     insta: "@spazziosalao",
                     address: "R Dr. Américo de Oliveira, 13 - Centro",
                   },
+                  {
+                    name: "Carina Santana - Maquiadora",
+                    phone: "(35) 98842-4677",
+                    insta: "@carinasantana_beauty",
+                  },
+                  {
+                    name: "TB Beauty",
+                    phone: "(35) 98434-7303",
+                    insta: "@tbbeautyoficial",
+                    address: "R Dr. Américo de Oliveira, 670 Sala 2 - Centro",
+                  },
                 ].map((salon, index) => (
                   <div
                     key={index}
@@ -387,12 +348,24 @@ function App() {
                       </p>
                       <p className="flex items-center gap-2">
                         <InstagramIcon />
-                        {salon.insta}
+                        <a
+                          href={`https://instagram.com/${salon.insta.replace(
+                            "@",
+                            ""
+                          )}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-pink-500 hover:underline"
+                        >
+                          {salon.insta}
+                        </a>
                       </p>
-                      <p className="flex items-center gap-2">
-                        <MapPin className="w-4 h-4" />
-                        {salon.address}
-                      </p>
+                      {salon.address && (
+                        <p className="flex items-center gap-2">
+                          <MapPin className="w-4 h-4" />
+                          {salon.address}
+                        </p>
+                      )}
                     </div>
                   </div>
                 ))}
@@ -401,12 +374,13 @@ function App() {
 
             <div id="transporte">
               <div className="max-w-6xl mx-auto">
-                <div className="text-center mb-16">
-                  <Car className="w-8 h-8 mx-auto mb-4 text-orange-500" />
-                  <h2 className="text-3xl font-light text-gray-900 mb-4">
+                <div className="text-center mb-4">
+                  <div className="w-16 h-16 bg-gradient-to-br from-orange-300 to-orange-400 shadow-sm group-hover:shadow-md rounded-full flex items-center justify-center mx-auto mb-6">
+                    <Car className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-medium text-gray-900 mb-4">
                     Transporte
-                  </h2>
-                  <p className="text-gray-600">Se beber não dirija</p>
+                  </h3>
                 </div>
               </div>
 
@@ -476,12 +450,8 @@ function App() {
 
       <footer className="border-gray-200 py-12 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <img
-            src="/wedding/logo colorido.png"
-            alt="M&L Logo"
-            className="w-16 h-16 mx-auto mb-4 opacity-60"
-          />
-          <p className="text-sm text-gray-400">25.04.2026</p>
+          <p className="text-xs uppercase tracking text-gray-500">Mariana & Luis Felipe</p>
+          <p className="text-xs uppercase tracking text-gray-500">25.04.2026</p>
         </div>
       </footer>
     </div>
