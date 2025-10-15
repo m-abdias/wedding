@@ -3,7 +3,7 @@ import { Hotel, Scissors, Car, Church } from "lucide-react";
 export default function Buttons() {
   return (
     <section className="text-center pb-14">
-      <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-14">
+      <div className="flex flex-wrap justify-center items-center gap-1 sm:gap-14">
         {/* Local da cerimônia */}
         <button
           onClick={() =>

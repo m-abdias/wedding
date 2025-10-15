@@ -34,11 +34,11 @@ export default function Contador() {
 
   return (
     <section className="text-center py-10">
-      <h2 className="text-gray-700 text-sm sm:text-base tracking-widest uppercase mb-8 font-light">
+      <h2 className="text-gray-700 text-sm sm:text-sm tracking-wide uppercase mb-8 font-light">
         Contagem regressiva para o grande dia
       </h2>
 
-      <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
+      <div className="flex flex-wrap justify-center gap-2 sm:gap-6">
         {[
           { label: "Dias", value: timeLeft.days },
           { label: "Horas", value: timeLeft.hours },
