@@ -112,10 +112,12 @@ function App() {
 
             <p className="text-sm text-gray-600 max-w-3xl mx-auto mb-2 leading-relaxed">
               Prepare-se para viver esse momento com a gente! <br />
-              Estamos muito felizes em compartilhar esse dia tão especial com vocês.
+              Estamos muito felizes em compartilhar esse dia tão especial com
+              vocês.
               <br />
-              Decidimos criar esta página para que vocês possam se organizar com antecedência, com informações sobre
-              hospedagem, salões e transporte.
+              Decidimos criar esta página para que vocês possam se organizar com
+              antecedência, com informações sobre hospedagem, salões e
+              transporte.
             </p>
 
             <Contador />
@@ -257,7 +259,14 @@ function App() {
                   </p>
                   <p className="flex items-center gap-2">
                     <WhatsAppIcon />
-                    {hotel.cel}
+                    <a
+                      href={`https://wa.me/55${hotel.cel.replace(/\D/g, "")}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-pink-500 hover:underline"
+                    >
+                      {hotel.cel}
+                    </a>
                   </p>
                 </div>
                 <a
@@ -342,7 +351,17 @@ function App() {
                     <div className="space-y-1 text-sm text-gray-500">
                       <p className="flex items-center gap-2">
                         <WhatsAppIcon />
-                        {salon.phone}
+                        <a
+                          href={`https://wa.me/55${salon.phone.replace(
+                            /\D/g,
+                            ""
+                          )}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-pink-500 hover:underline"
+                        >
+                          {salon.phone}
+                        </a>
                       </p>
                       <p className="flex items-center gap-2">
                         <InstagramIcon />
@@ -448,7 +467,9 @@ function App() {
 
       <footer className="border-gray-200 py-12 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <p className="text-xs uppercase tracking text-gray-500">Mariana & Luis Felipe</p>
+          <p className="text-xs uppercase tracking text-gray-500">
+            Mariana & Luis Felipe
+          </p>
           <p className="text-xs uppercase tracking text-gray-500">25.04.2026</p>
         </div>
       </footer>
