@@ -110,7 +110,7 @@ function App() {
       <section className="relative">
         <div className="relative h-[100vh] overflow-hidden">
           <img
-            src="/Imagem do WhatsApp de 2025-10-14 à(s) 20.29.08_0123b258.jpg"
+            src="/wedding/Imagem do WhatsApp de 2025-10-14 à(s) 20.29.08_0123b258.jpg"
             alt="Mariana e Luis Felipe"
             className="absolute inset-0 w-full h-full object-cover object-center"
           />
@@ -119,7 +119,7 @@ function App() {
 
           <div className="absolute bottom-24 md:bottom-32 left-1/2 transform -translate-x-1/2 z-10">
             <img
-              src="/logo black.png"
+              src="/wedding/logo black.png"
               alt="M&L Logo"
               className="w-24 h-24 md:w-32 md:h-32 animate-fade-in drop-shadow-2xl"
             />
@@ -137,7 +137,7 @@ function App() {
 
             <div className="mb-4 flex justify-center">
               <img
-                src="/names-calligraphy.png"
+                src="/wedding/names-calligraphy.png"
                 alt="Mariana e Luis Felipe"
                 className="w-full max-w-md h-auto"
               />
@@ -467,7 +467,7 @@ function App() {
                 {[
                   {
                     name: "ItaCar",
-                    icon: "/itacar.png",
+                    icon: "/wedding/itacar.png",
                     apple:
                       "https://apps.apple.com/br/app/itacar-passageiro/id1492454469 ",
                     googlePlay:
@@ -701,7 +701,7 @@ function App() {
       <footer className="border-gray-200 py-12 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <img
-            src="/logo colorido.png"
+            src="/wedding/logo colorido.png"
             alt="M&L Logo"
             className="w-16 h-16 mx-auto mb-4 opacity-60"
           />
