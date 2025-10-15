@@ -1,15 +1,5 @@
 import { useState, useEffect } from "react";
-import {
-  MapPin,
-  Hotel,
-  Scissors,
-  Car,
-  Mail,
-  Phone,
-  X,
-  Check,
-} from "lucide-react";
-import { supabase } from "./lib/supabase";
+import { MapPin, Hotel, Scissors, Car, Mail, Phone } from "lucide-react";
 
 const WhatsAppIcon = () => (
   <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -36,21 +26,7 @@ const GooglePlayIcon = () => (
 );
 
 function App() {
-  const [showForm, setShowForm] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
-
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    interested_in_attending: true,
-    needs_accommodation: false,
-    needs_transportation: false,
-    number_of_guests: 1,
-    notes: "",
-    message: "",
-  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -59,51 +35,6 @@ function App() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-
-    try {
-      const { error } = await supabase.from("guests").insert([
-        {
-          name: formData.name,
-          phone: formData.phone,
-          will_attend: formData.interested_in_attending,
-          interested_in_attending: formData.interested_in_attending,
-          needs_accommodation: formData.needs_accommodation,
-          needs_transportation: formData.needs_transportation,
-          number_of_guests: formData.number_of_guests,
-          notes: formData.notes,
-          message: formData.message,
-          dietary_restrictions: "",
-        },
-      ]);
-
-      if (error) throw error;
-
-      setIsSubmitted(true);
-      setTimeout(() => {
-        setShowForm(false);
-        setIsSubmitted(false);
-        setFormData({
-          name: "",
-          phone: "",
-          interested_in_attending: true,
-          needs_accommodation: false,
-          needs_transportation: false,
-          number_of_guests: 1,
-          notes: "",
-          message: "",
-        });
-      }, 3000);
-    } catch (error) {
-      console.error("Error submitting:", error);
-      alert("Erro ao enviar. Por favor, tente novamente.");
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -169,7 +100,7 @@ function App() {
               </div>
             </div>
 
-            <p className="text-base text-gray-600 max-w-3xl mx-auto mb-10 leading-relaxed">
+            <p className="text-sm text-gray-600 max-w-3xl mx-auto mb-10 leading-relaxed">
               Prepare-se para viver esse momento com a gente! <br />
               Nosso casamento será em Itajubá, e estamos muito felizes em
               compartilhar esse dia tão especial com vocês.
@@ -180,7 +111,7 @@ function App() {
             </p>
 
             <div
-              className="flex flex-wrap justify-center gap-3"
+              className="py-20 grid grid-cols-2 sm:grid-cols-4 gap-4 justify-center"
               style={{ marginTop: "-2rem", marginBottom: "1rem" }}
             >
               <button
@@ -189,37 +120,53 @@ function App() {
                     .getElementById("hospedagem")
                     ?.scrollIntoView({ behavior: "smooth" })
                 }
-                className="group flex items-center gap-2 px-6 py-3 bg-white border border-gray-300 rounded-full hover:border-pink-400 hover:bg-pink-50 transition-all duration-300 shadow-sm hover:shadow-md"
+                className="group flex flex-col items-center gap-1 px-4 py-3 bg-white border-gray-300 rounded-2xl hover:border-green-400 hover:bg-green-50 transition-all duration-300 shadow-sm hover:shadow-lg"
               >
-                <Hotel className="w-5 h-5 text-pink-500" />
-                <span className="text-sm font-medium text-gray-700 group-hover:text-pink-600">
+                <Hotel className="w-6 h-6 text-green-500" />
+                <span className="text-sm font-medium text-gray-700 group-hover:text-green-600">
                   Hospedagens
                 </span>
               </button>
+
               <button
                 onClick={() =>
                   document
                     .getElementById("salao")
                     ?.scrollIntoView({ behavior: "smooth" })
                 }
-                className="group flex items-center gap-2 px-6 py-3 bg-white border border-gray-300 rounded-full hover:border-pink-400 hover:bg-pink-50 transition-all duration-300 shadow-sm hover:shadow-md"
+                className="group flex flex-col items-center gap-1 px-4 py-3 bg-white border-gray-300 rounded-2xl hover:border-pink-400 hover:bg-pink-50 transition-all duration-300 shadow-sm hover:shadow-lg"
               >
-                <Scissors className="w-5 h-5 text-pink-500" />
+                <Scissors className="w-6 h-6 text-pink-500" />
                 <span className="text-sm font-medium text-gray-700 group-hover:text-pink-600">
                   Salões
                 </span>
               </button>
+
               <button
                 onClick={() =>
                   document
                     .getElementById("transporte")
                     ?.scrollIntoView({ behavior: "smooth" })
                 }
-                className="group flex items-center gap-2 px-6 py-3 bg-white border border-gray-300 rounded-full hover:border-orange-400 hover:bg-orange-50 transition-all duration-300 shadow-sm hover:shadow-md"
+                className="group flex flex-col items-center gap-1 px-4 py-3 bg-white border-gray-300 rounded-2xl hover:border-orange-400 hover:bg-orange-50 transition-all duration-300 shadow-sm hover:shadow-lg"
               >
-                <Car className="w-5 h-5 text-orange-500" />
+                <Car className="w-6 h-6 text-orange-500" />
                 <span className="text-sm font-medium text-gray-700 group-hover:text-orange-600">
                   Transporte
+                </span>
+              </button>
+
+              <button
+                onClick={() =>
+                  document
+                    .getElementById("cerimonia")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
+                className="group flex flex-col items-center gap-1 px-4 py-3 bg-white border-gray-300 rounded-2xl hover:border-red-400 hover:bg-red-50 transition-all duration-300 shadow-sm hover:shadow-lg"
+              >
+                <MapPin className="w-6 h-6 text-red-500" />
+                <span className="text-sm font-medium text-gray-700 group-hover:text-red-600">
+                  Cerimônia
                 </span>
               </button>
             </div>
@@ -227,7 +174,7 @@ function App() {
         </div>
       </section>
 
-      <section className="py-20 px-4 bg-gray-50">
+      <section id="cerimonia" className="py-20 px-4 bg-gray-50">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-16">
             Cerimônia
@@ -235,8 +182,8 @@ function App() {
 
           <div className="max-w-3xl mx-auto">
             <div className="bg-white border border-gray-200 rounded-sm p-8 shadow-sm">
-              <div className="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <MapPin className="w-8 h-8 text-pink-500" />
+              <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <MapPin className="w-8 h-8 text-red-500" />
               </div>
               <h3 className="text-2xl font-medium text-gray-900 mb-4">
                 Igreja do Colégio das Irmãs
@@ -254,7 +201,7 @@ function App() {
                 href="https://maps.app.goo.gl/HzjZ2D5pyXZSP9yW6"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 mt-6 border border-pink-400 text-pink-600 px-6 py-3 rounded-full hover:bg-pink-50 transition-colors text-sm font-medium"
+                className="inline-flex items-center gap-2 mt-6 border border-red-400 text-red-600 px-6 py-3 rounded-full hover:bg-red-50 transition-colors text-sm font-medium"
               >
                 <MapPin className="w-4 h-4" />
                 Abrir no Google Maps
@@ -267,7 +214,7 @@ function App() {
       <section id="hospedagem" className="py-20 px-4 scroll-mt-20">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <Hotel className="w-8 h-8 mx-auto mb-4 text-orange-500" />
+            <Hotel className="w-8 h-8 mx-auto mb-4 text-green-500" />
             <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4">
               Hospedagem
             </h2>
@@ -343,7 +290,7 @@ function App() {
             ].map((hotel, index) => (
               <div
                 key={index}
-                className="border border-gray-200 rounded-sm p-6 hover:border-pink-300 transition-colors"
+                className="border border-gray-200 rounded-sm p-6 hover:border-green-300 transition-colors"
               >
                 <h3 className="text-xl font-medium text-gray-900 mb-2">
                   {hotel.name}
@@ -370,7 +317,7 @@ function App() {
                   href={hotel.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block text-center border border-gray-300 text-gray-700 px-4 py-2 rounded-full hover:border-pink-400 hover:text-pink-500 transition-colors text-sm"
+                  className="block text-center border border-gray-300 text-gray-700 px-4 py-2 rounded-full hover:border-green-400 hover:text-green-500 transition-colors text-sm"
                 >
                   Ver Disponibilidade
                 </a>
@@ -517,177 +464,6 @@ function App() {
         </div>
       </section>
 
-      <section className="px-4">
-        <div className="max-w-2xl mx-auto text-center">
-          <p className="text-gray-600 mb-10 leading-relaxed">
-            Confirme seu interesse em participar do nosso casamento.
-            <br />
-            Isso nos ajudará no planejamento e enviaremos mais informações em
-            breve.
-          </p>
-          <button
-            onClick={() => setShowForm(true)}
-            className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-orange-500 text-white px-10 py-4 rounded-full hover:shadow-lg transition-all duration-300 hover:scale-105"
-          >
-            Confirmar Interesse
-          </button>
-        </div>
-      </section>
-
-      {showForm && (
-        <div className="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-sm shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
-            {isSubmitted ? (
-              <div className="p-12 text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Check className="w-8 h-8 text-green-600" />
-                </div>
-                <h3 className="text-2xl font-light text-gray-900 mb-4">
-                  Recebido com sucesso!
-                </h3>
-                <p className="text-gray-600">
-                  Obrigado por confirmar seu interesse. Em breve enviaremos mais
-                  detalhes.
-                </p>
-              </div>
-            ) : (
-              <>
-                <div className="p-8 border-b border-gray-200">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-2xl font-light text-gray-900">
-                      Confirme seu Interesse
-                    </h3>
-                    <button
-                      onClick={() => setShowForm(false)}
-                      className="text-gray-400 hover:text-gray-600"
-                    >
-                      <X className="w-6 h-6" />
-                    </button>
-                  </div>
-                </div>
-
-                <form onSubmit={handleSubmit} className="p-8 space-y-6">
-                  <div>
-                    <label className="block text-sm text-gray-700 mb-2">
-                      Nome Completo *
-                    </label>
-                    <input
-                      type="text"
-                      required
-                      value={formData.name}
-                      onChange={(e) =>
-                        setFormData({ ...formData, name: e.target.value })
-                      }
-                      className="w-full px-4 py-3 border border-gray-300 rounded-sm focus:border-pink-400 focus:ring-1 focus:ring-pink-400 outline-none transition-all"
-                      placeholder="Seu nome completo"
-                    />
-                  </div>
-
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-sm text-gray-700 mb-2">
-                        Telefone
-                      </label>
-                      <input
-                        type="tel"
-                        value={formData.phone}
-                        onChange={(e) =>
-                          setFormData({ ...formData, phone: e.target.value })
-                        }
-                        className="w-full px-4 py-3 border border-gray-300 rounded-sm focus:border-pink-400 focus:ring-1 focus:ring-pink-400 outline-none transition-all"
-                        placeholder="(11) 99999-9999"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm text-gray-700 mb-3">
-                      Você tem interesse em participar? *
-                    </label>
-                    <div className="grid grid-cols-2 gap-4">
-                      <button
-                        type="button"
-                        onClick={() =>
-                          setFormData({
-                            ...formData,
-                            interested_in_attending: true,
-                          })
-                        }
-                        className={`py-3 px-6 border rounded-sm font-medium transition-all ${
-                          formData.interested_in_attending
-                            ? "bg-pink-500 text-white border-pink-500"
-                            : "border-gray-300 text-gray-700 hover:border-gray-400"
-                        }`}
-                      >
-                        Sim, conte comigo!
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() =>
-                          setFormData({
-                            ...formData,
-                            interested_in_attending: false,
-                          })
-                        }
-                        className={`py-3 px-6 border rounded-sm font-medium transition-all ${
-                          !formData.interested_in_attending
-                            ? "bg-gray-600 text-white border-gray-600"
-                            : "border-gray-300 text-gray-700 hover:border-gray-400"
-                        }`}
-                      >
-                        Não poderei ir
-                      </button>
-                    </div>
-                  </div>
-
-                  {formData.interested_in_attending && (
-                    <>
-                      <div>
-                        <label className="block text-sm text-gray-700 mb-2">
-                          Observações
-                        </label>
-                        <textarea
-                          value={formData.notes}
-                          onChange={(e) =>
-                            setFormData({ ...formData, notes: e.target.value })
-                          }
-                          rows={3}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-sm focus:border-pink-400 focus:ring-1 focus:ring-pink-400 outline-none transition-all resize-none"
-                          placeholder="Deseja confirmar o interesse de mais alguém?"
-                        />
-                      </div>
-                    </>
-                  )}
-
-                  <div>
-                    <label className="block text-sm text-gray-700 mb-2">
-                      Mensagem para os noivos
-                    </label>
-                    <textarea
-                      value={formData.message}
-                      onChange={(e) =>
-                        setFormData({ ...formData, message: e.target.value })
-                      }
-                      rows={3}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-sm focus:border-pink-400 focus:ring-1 focus:ring-pink-400 outline-none transition-all resize-none"
-                      placeholder="Deixe uma mensagem carinhosa..."
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={isLoading}
-                    className="w-full bg-gradient-to-r from-pink-500 to-orange-500 text-white py-4 rounded-full hover:shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed font-medium"
-                  >
-                    {isLoading ? "Enviando..." : "Enviar Confirmação"}
-                  </button>
-                </form>
-              </>
-            )}
-          </div>
-        </div>
-      )}
-
       {showScrollTop && (
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -705,7 +481,6 @@ function App() {
             alt="M&L Logo"
             className="w-16 h-16 mx-auto mb-4 opacity-60"
           />
-          <p className="text-sm text-gray-500 mb-1">Mariana & Luis Felipe</p>
           <p className="text-sm text-gray-400">25.04.2026</p>
         </div>
       </footer>
