@@ -112,12 +112,10 @@ function App() {
 
             <p className="text-sm text-gray-600 max-w-3xl mx-auto mb-2 leading-relaxed">
               Prepare-se para viver esse momento com a gente! <br />
-              Nosso casamento será em Itajubá, e estamos muito felizes em
-              compartilhar esse dia tão especial com vocês.
+              Estamos muito felizes em compartilhar esse dia tão especial com vocês.
               <br />
-              Decidimos criar esta página para que você possa confirmar seu
-              interesse e se organizar com antecedência, com informações sobre
-              hospedagem, salões de beleza e transporte por aplicativo.
+              Decidimos criar esta página para que vocês possam se organizar com antecedência, com informações sobre
+              hospedagem, salões e transporte.
             </p>
 
             <Contador />
